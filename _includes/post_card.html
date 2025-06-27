@@ -21,7 +21,7 @@
 		</div>
 
 		{% if post.img %}
-		<img src="{{post.img.url}}" class="card-img-top" alt="{{post.img.alt}}" />
+		<img src="{{post.img.url | prepend: site.baseurl }}" class="card-img-top" alt="{{post.img.alt}}" />
 		{% endif %}
 
 		<div class="card-body">
