@@ -1,0 +1,35 @@
+<div class="col">
+	<div class="card mb-3 post-card">
+		<div class="card-header">
+			<div class="d-flex justify-content-between">
+				<h5>{{post.title}}</h5>
+				<div><span class="badge rounded-pill {{post.status}}">{{post.status}}</span></div>
+			</div>
+
+			<small class="text-muted authors">
+				{%- if post.authors -%}
+				{% capture authors %}
+				{%- for author in post.authors -%}
+				{{ author }}
+				{%- if forloop.last == false -%},{%- endif -%}
+				{%- endfor -%}
+				{% endcapture %}
+				{{authors | replace: ",", ", " | truncate:40}}<span class="tooltiptext">{{authors | replace: ",", ",
+					"}}</span>
+				{%- endif -%}
+			</small>
+		</div>
+
+		{% if post.img %}
+		<img src="{{post.img.url}}" class="card-img-top" alt="{{post.img.alt}}" />
+		{% endif %}
+
+		<div class="card-body">
+			<p class="card-text">{{post.excerpt | remove: "
+			<p>" | remove: "</p>" | truncate: 160}}</p>
+		</div>
+		<div class="card-footer">
+			<a href="{{post.url | relative_url }}" class="btn btn-outline-primary">Details</a>
+		</div>
+	</div>
+</div>

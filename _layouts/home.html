@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {%- for post in site.posts -%}
+    {% include post_card.html %}
+    {%- endfor -%}
+  </div>
+
+</div>

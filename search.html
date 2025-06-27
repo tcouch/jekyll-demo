@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4" id="search-results"></div>
+</div>
+
+<script>
+  window.store = {
+    {% for post in site.posts %}
+    "{{ post.url | slugify }}": {
+      "title": "{{ post.title | xml_escape }}",
+      "authors": "{{ post.authors | join: ", " | xml_escape }}",
+      "status": "{{ post.status }}",
+      "category": "{{ post.category | xml_escape }}",
+      "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+      "url": "{{ post.url | xml_escape | relative_url }}"
+    }
+    {% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  };
+</script>
+{% raw %}
+<script id="resultTemplate" type="" text/x-handlebars-template">
+    <div class="col">
+    <div class="card mb-3 post-card" style="height: 18rem;">
+      <div class="card-header">
+        <div class="row justify-content-between">
+          <div class="col-9">
+			      <h5>{{title}}</h5>
+          </div>
+          <div class="col-3">
+					  <p><span class="badge rounded-pill {{status}}">{{status}}</span></p>
+				  </div>
+        </div>
+        <small class="text-muted authors">
+          {{#if authors}}
+            {{ truncate authors 40}}<span class="tooltiptext">{{authors}}</span>
+          {{/if}}
+			  </small>
+      </div>
+      <div class="card-body">
+          <p class="card-text">{{summary}}</p>
+      </div>
+      <div class="card-footer">
+          <a href="{{url}}" class="btn btn-outline-primary">Details</a>
+      </div>
+    </div>
+    </div>
+</script>
+{% endraw %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+<script src="assets/js/lunr.js"></script>
+<script src="assets/js/search.js"></script>

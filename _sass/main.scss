@@ -1,0 +1,144 @@
+$primary: #FC3756;
+$secondary: #24AD2D;
+$accent-colour-1: #ED7627;
+$accent-colour-2: #81217C;
+$accent-colour-3: #FFDC40;
+$background-colour: #D13189;
+
+$background-colour-highlight: #E4E5E6;
+$text-colour: #333333;
+
+// Dynamic (CSS) variables used at run-time, interpolated from SCSS
+:root {
+	--primary: #{ $primary };
+	--secondary: #{ $secondary };
+	--accent-colour-1: #{ $accent-colour-1 };
+	--accent-colour-2: #{ $accent-colour-2 };
+	--accent-colour-3: #{ $accent-colour-3 };
+	--background-colour: #{ $background-colour };
+
+	--background-colour-highlight: #{ $background-colour-highlight };
+	--text-colour: #{ $text-colour };
+}
+
+
+html, body {
+	height: 100%;
+	color: var(--text-colour);
+	background-color: var(--background-colour);
+}
+
+a {
+	color: var(--accent-colour-1);
+	text-decoration: none;
+	&:hover {
+		color: var(--accent-colour-3);
+	}
+}
+
+code {
+	background-color: var(--background-colour-highlight);
+	color: var(--text-colour);
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+}
+
+@import "navbar";
+@import "search";
+@import "footer";
+
+
+#data iframe {
+	margin: 1rem;
+	background-color: gray;
+}
+
+.body-inner {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+}
+
+.content {
+	padding: 1rem 0;
+}
+
+.post-card {
+	.card-header {
+		background-color: var(--accent-colour-1);
+	}
+
+	.card-footer {
+		background-color: var(--accent-colour-1);
+	}
+
+	.card-body {
+		color: $background-colour-highlight;
+		background-color: var(--secondary);
+	}
+
+	img {
+		height: 15rem;
+		width: auto;
+		object-fit: contain;
+		background-color: var(--secondary);
+		padding-top: 5px;
+		border-radius: 0;
+	}
+
+	.btn-outline-primary {
+		color: #fff;
+		border-color: var(--accent-colour-1);
+		background-color: var(--background-colour);
+
+		&:hover {
+			color: var(--secondary);
+			border-color: var(--secondary);
+			background-color: var(--accent-colour-3);
+		}
+	}
+
+	.badge {
+		font-size: 0.75em;
+	}
+}
+
+.badge {
+	font-size: 0.5em;
+
+	&.ongoing {
+		background-color: var(--accent-colour-1);
+	}
+
+	&.completed {
+		background-color: var(--primary);
+	}
+}
+
+.authors {
+	.tooltiptext {
+		visibility: hidden;
+		width: 300px;
+		background-color: #555;
+		color: #fff;
+		text-align: center;
+		padding: 5px 0;
+		border-radius: 6px;
+
+		/* Position the tooltip text */
+		position: absolute;
+		z-index: 1;
+		top: 35px;
+		left: 70px;
+		margin-left: -60px;
+
+		/* Fade in tooltip */
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+  	&:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}
+}
