@@ -1,12 +1,12 @@
-$primary: #FC3756;
-$secondary: #24AD2D;
-$accent-colour-1: #ED7627;
-$accent-colour-2: #81217C;
-$accent-colour-3: #FFDC40;
-$background-colour: #D13189;
+$primary: #234075;
+$secondary: #f5f7fa;
+$accent-colour-1: #2a7ae2;
+$accent-colour-2: #f7b32b;
+$accent-colour-3: #e94f37;
+$background-colour: #FFFFFF;
 
-$background-colour-highlight: #E4E5E6;
-$text-colour: #333333;
+$background-colour-highlight: #e9eef6;
+$text-colour: #222b38;
 
 // Dynamic (CSS) variables used at run-time, interpolated from SCSS
 :root {
@@ -64,30 +64,40 @@ code {
 }
 
 .post-card {
+	height: 28rem;
+	display: flex;
+	flex-direction: column;
+
+
 	.card-header {
 		background-color: var(--accent-colour-1);
+		flex-shrink: 0;
 	}
 
 	.card-footer {
 		background-color: var(--accent-colour-1);
+		flex-shrink: 0;
 	}
 
 	.card-body {
-		color: $background-colour-highlight;
+		color: $text-colour;
 		background-color: var(--secondary);
+		flex: 1 1 auto;
+        overflow: hidden;
 	}
 
 	img {
-		height: 15rem;
+		height: 10rem;
 		width: auto;
 		object-fit: contain;
 		background-color: var(--secondary);
 		padding-top: 5px;
 		border-radius: 0;
+		max-width: 100%;
 	}
 
 	.btn-outline-primary {
-		color: #fff;
+		color: var(--text-colour);
 		border-color: var(--accent-colour-1);
 		background-color: var(--background-colour);
 
